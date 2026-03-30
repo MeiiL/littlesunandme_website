@@ -488,30 +488,33 @@ section { padding: 64px 20px; }
 .exp-btn, .exp-video-btn, .portfolio-video-btn {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px; 
+  padding: 8px 12px; /* 這裡的 padding 設置為相同 */
   margin-top: 8px;
   border-radius: 20px;
   text-decoration: none;
-  transition: background 0.3s;
+  font-size: 0.85rem; /* 統一字體大小 */
+  font-weight: 700; /* 統一字體粗細 */
+  transition: background 0.3s; 
 }
 
 .exp-btn {
-  background: var(--mint);
+  background: var(--mint); /* 看步驟按鈕的背景 */
   color: var(--white);
 }
 
 .exp-btn:hover {
-  background: #5db8b0;
+  background: #5db8b0; /* 看步驟按鈕 hover 效果 */
 }
 
 .exp-video-btn {
-  background: var(--coral);
+  background: var(--coral); /* 觀看影片按鈕的背景 */
   color: var(--white);
 }
 
 .exp-video-btn:hover {
-  background: #e8704f;
+  background: #e8704f; /* 觀看影片按鈕 hover 效果 */
 }
+
 
 </style>
 
