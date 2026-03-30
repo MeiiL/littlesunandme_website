@@ -485,21 +485,34 @@ section { padding: 64px 20px; }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ig video */
-.exp-video-btn, .portfolio-video-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 12px;
-    margin-top: 8px;
-    background: var(--coral);
-    color: var(--white);
-    border-radius: 20px;
-    text-decoration: none;
-    transition: background 0.3s;
-  }
+.exp-btn, .exp-video-btn, .portfolio-video-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px; 
+  margin-top: 8px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
 
-.exp-video-btn:hover, .portfolio-video-btn:hover {
-    background: #e8704f;
-  }
+.exp-btn {
+  background: var(--mint);
+  color: var(--white);
+}
+
+.exp-btn:hover {
+  background: #5db8b0;
+}
+
+.exp-video-btn {
+  background: var(--coral);
+  color: var(--white);
+}
+
+.exp-video-btn:hover {
+  background: #e8704f;
+}
+
 </style>
 
 </head>
