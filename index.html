@@ -215,32 +215,32 @@ font-weight: 700; line-height: 1.35; margin-bottom: 16px;
 
 /* ── PHILOSOPHY ── */
 .philosophy {
-background: var(–text);
+background-color: #3A3226;
 color: var(–white); text-align: center;
 padding: 80px 48px;
 }
 .philosophy-quote {
 font-family: ‘Noto Serif TC’, serif;
-font-size: clamp(1.6rem, 3vw, 2.2rem);
-line-height: 1.6; max-width: 700px; margin: 0 auto 24px;
+font-size: clamp(1.4rem, 4vw, 2.2rem);
+line-height: 1.7; max-width: 700px; margin: 0 auto 24px;
 color: var(–sun-light);
 }
 .philosophy-quote .highlight { color: var(–sun); }
 .philosophy-sub { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
 .phil-cards {
-display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
-max-width: 900px; margin: 56px auto 0;
+display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+max-width: 900px; margin: 48px auto 0;
 }
 .phil-card {
-background: rgba(255,255,255,0.06);
-border: 1px solid rgba(255,255,255,0.12);
-border-radius: 20px; padding: 32px 24px;
+background: rgba(255,255,255,0.08);
+border: 1px solid rgba(255,255,255,0.15);
+border-radius: 20px; padding: 28px 20px;
 text-align: left; transition: all 0.3s;
 }
-.phil-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
-.phil-icon { font-size: 2.4rem; margin-bottom: 16px; }
-.phil-card h3 { font-size: 1.05rem; font-weight: 700; color: var(–sun-light); margin-bottom: 8px; }
-.phil-card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.phil-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-4px); }
+.phil-icon { font-size: 2.2rem; margin-bottom: 14px; }
+.phil-card h3 { font-size: 1rem; font-weight: 700; color: var(–sun-light); margin-bottom: 8px; }
+.phil-card p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
 
 /* ── STEAM EXPERIMENTS ── */
 .experiments-section { background: #F0FBF9; }
@@ -294,13 +294,11 @@ transition: all 0.2s; font-family: ‘Nunito’, sans-serif;
 /* modal */
 .modal-overlay {
 position: fixed; inset: 0; z-index: 200;
-background: rgba(30,24,18,0.82);
--webkit-backdrop-filter: blur(6px);
-backdrop-filter: blur(6px);
+background: rgba(20,16,12,0.92);
 display: flex; align-items: center; justify-content: center;
 padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s;
--webkit-transform: translateZ(0);
-transform: translateZ(0);
+-webkit-transform: translate3d(0,0,0);
+transform: translate3d(0,0,0);
 }
 .modal-overlay.active { opacity: 1; pointer-events: all; }
 .modal {
@@ -447,14 +445,19 @@ footer p { font-size: 0.85rem; }
 @media(max-width: 768px) {
 nav { padding: 16px 24px; }
 .nav-links { display: none; }
-section { padding: 72px 24px; }
-.hero { padding: 100px 24px 60px; }
+section { padding: 64px 20px; }
+.hero { padding: 100px 20px 60px; }
 .hero-inner { grid-template-columns: 1fr; gap: 40px; }
 .hero-visual { order: -1; }
-.phil-cards { grid-template-columns: 1fr; }
+.philosophy { padding: 60px 20px; background-color: #3A3226; }
+.phil-cards { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+.phil-card { padding: 20px 16px; }
 .about-inner { grid-template-columns: 1fr; gap: 40px; }
 .portfolio-grid { grid-template-columns: 1fr 1fr; }
 .ig-thumb { width: 70px; height: 70px; font-size: 2rem; }
+.modal { border-radius: 24px; }
+.modal-header { height: 140px; font-size: 4rem; }
+.modal-body { padding: 20px; }
 }
 
 /* scroll animation */
