@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小日光與我 Little Sunshine & Me</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sun: #FFD84D;
+    --sun-light: #FFF3B0;
+    --coral: #FF8B6B;
+    --mint: #7ECAC3;
+    --sky: #A8D8EA;
+    --lavender: #C3B1E1;
+    --leaf: #90C67C;
+    --cream: #FFFDF5;
+    --text: #3A3226;
+    --text-light: #7A6E61;
+    --white: #FFFFFF;
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘Nunito’, ‘Noto Serif TC’, sans-serif;
+background: var(–cream);
+color: var(–text);
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+display: flex; align-items: center; justify-content: space-between;
+padding: 16px 48px;
+background: rgba(255,253,245,0.92);
+backdrop-filter: blur(12px);
+border-bottom: 2px solid var(–sun-light);
+}
+.nav-logo {
+font-family: ‘Caveat’, cursive;
+font-size: 1.6rem; font-weight: 700;
+color: var(–text);
+text-decoration: none;
+display: flex; align-items: center; gap: 8px;
+}
+.nav-logo .sun-dot {
+width: 22px; height: 22px; border-radius: 50%;
+background: var(–sun);
+box-shadow: 0 0 0 4px var(–sun-light);
+flex-shrink: 0;
+animation: pulse-sun 3s ease-in-out infinite;
+}
+@keyframes pulse-sun {
+0%,100%{ box-shadow: 0 0 0 4px var(–sun-light); }
+50%{ box-shadow: 0 0 0 8px rgba(255,216,77,0.2); }
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+text-decoration: none; color: var(–text-light);
+font-weight: 600; font-size: 0.95rem;
+position: relative; padding-bottom: 2px;
+transition: color 0.2s;
+}
+.nav-links a::after {
+content: ‘’; position: absolute; bottom: 0; left: 0;
+width: 0; height: 2px; background: var(–coral);
+transition: width 0.3s;
+}
+.nav-links a:hover { color: var(–coral); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh;
+display: flex; align-items: center; justify-content: center;
+padding: 120px 48px 80px;
+position: relative; overflow: hidden;
+background: linear-gradient(160deg, #FFFDF5 0%, #FFF3B0 40%, #FFE8D6 70%, #E8F5F3 100%);
+}
+.hero-blobs {
+position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.blob {
+position: absolute; border-radius: 50%;
+opacity: 0.35; filter: blur(60px);
+animation: float-blob 8s ease-in-out infinite;
+}
+.blob-1 { width: 400px; height: 400px; background: var(–sun); top: -100px; right: -80px; animation-delay: 0s; }
+.blob-2 { width: 300px; height: 300px; background: var(–mint); bottom: 50px; left: -80px; animation-delay: 3s; }
+.blob-3 { width: 200px; height: 200px; background: var(–coral); top: 40%; left: 30%; animation-delay: 5s; }
+@keyframes float-blob {
+0%,100% { transform: translate(0,0) scale(1); }
+50% { transform: translate(20px,-30px) scale(1.05); }
+}
+
+.hero-inner {
+max-width: 1100px; width: 100%;
+display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+align-items: center; position: relative; z-index: 1;
+}
+.hero-text { animation: fade-up 0.8s ease both; }
+@keyframes fade-up {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.hero-badge {
+display: inline-flex; align-items: center; gap: 8px;
+background: var(–white); border: 2px solid var(–sun);
+border-radius: 100px; padding: 6px 16px;
+font-size: 0.8rem; font-weight: 700; color: var(–text-light);
+margin-bottom: 24px; letter-spacing: 0.05em;
+}
+.hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(–sun); }
+.hero-title {
+font-family: ‘Noto Serif TC’, serif;
+font-size: clamp(2.4rem, 5vw, 3.6rem);
+font-weight: 700; line-height: 1.25;
+color: var(–text); margin-bottom: 12px;
+}
+.hero-title .accent { color: var(–coral); }
+.hero-subtitle {
+font-family: ‘Caveat’, cursive;
+font-size: 1.6rem; color: var(–mint);
+margin-bottom: 20px; font-weight: 700;
+}
+.hero-desc {
+font-size: 1.05rem; color: var(–text-light);
+line-height: 1.8; margin-bottom: 36px;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+.tag {
+background: var(–white); border-radius: 100px;
+padding: 6px 16px; font-size: 0.85rem; font-weight: 600;
+color: var(–text); border: 2px solid transparent;
+transition: all 0.2s;
+}
+.tag:hover { transform: translateY(-2px); }
+.tag.steam { border-color: var(–mint); }
+.tag.craft { border-color: var(–coral); }
+.tag.play { border-color: var(–lavender); }
+.tag.moment { border-color: var(–sun); }
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+display: inline-flex; align-items: center; gap: 8px;
+padding: 14px 28px; border-radius: 100px;
+font-size: 0.95rem; font-weight: 700; text-decoration: none;
+transition: all 0.25s; cursor: pointer; border: none;
+}
+.btn-primary { background: var(–coral); color: var(–white); }
+.btn-primary:hover { background: #e8704f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,139,107,0.4); }
+.btn-outline { background: transparent; color: var(–text); border: 2px solid var(–text-light); }
+.btn-outline:hover { border-color: var(–coral); color: var(–coral); transform: translateY(-2px); }
+
+/* hero illustration */
+.hero-visual { animation: fade-up 0.8s 0.2s ease both; }
+.sun-illustration {
+width: 100%; max-width: 420px; margin: 0 auto;
+position: relative;
+}
+.sun-circle {
+width: 280px; height: 280px; border-radius: 50%;
+background: radial-gradient(circle at 35% 35%, #FFE566, #FFD84D, #FFBA00);
+margin: 40px auto; position: relative;
+box-shadow: 0 20px 60px rgba(255,216,77,0.5);
+animation: rotate-sun 20s linear infinite;
+}
+.sun-ray {
+position: absolute; background: var(–sun);
+border-radius: 100px; transform-origin: 50% 100%;
+bottom: 50%; left: 50%; margin-left: -6px;
+width: 12px; opacity: 0.6;
+}
+.floating-card {
+position: absolute; background: var(–white);
+border-radius: 20px; padding: 12px 16px;
+box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+display: flex; align-items: center; gap: 10px;
+font-size: 0.85rem; font-weight: 700; color: var(–text);
+animation: float-card 4s ease-in-out infinite;
+white-space: nowrap;
+}
+.floating-card .icon { font-size: 1.4rem; }
+.card-1 { top: 0; left: -20px; animation-delay: 0s; }
+.card-2 { top: 30%; right: -30px; animation-delay: 1.5s; }
+.card-3 { bottom: 10%; left: 10px; animation-delay: 3s; }
+@keyframes float-card {
+0%,100% { transform: translateY(0); }
+50% { transform: translateY(-10px); }
+}
+@keyframes rotate-sun {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+/* ── SECTION COMMON ── */
+section { padding: 100px 48px; }
+.section-label {
+display: inline-flex; align-items: center; gap: 8px;
+font-family: ‘Caveat’, cursive; font-size: 1.1rem; font-weight: 700;
+color: var(–coral); margin-bottom: 12px;
+}
+.section-label::before { content: ‘’; display: block; width: 24px; height: 3px; background: var(–coral); border-radius: 2px; }
+h2 {
+font-family: ‘Noto Serif TC’, serif;
+font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+font-weight: 700; line-height: 1.35; margin-bottom: 16px;
+}
+.section-desc { color: var(–text-light); font-size: 1.05rem; line-height: 1.8; max-width: 560px; margin-bottom: 56px; }
+.max-w { max-width: 1200px; margin: 0 auto; }
+
+/* ── PHILOSOPHY ── */
+.philosophy {
+background: var(–text);
+color: var(–white); text-align: center;
+padding: 80px 48px;
+}
+.philosophy-quote {
+font-family: ‘Noto Serif TC’, serif;
+font-size: clamp(1.6rem, 3vw, 2.2rem);
+line-height: 1.6; max-width: 700px; margin: 0 auto 24px;
+color: var(–sun-light);
+}
+.philosophy-quote .highlight { color: var(–sun); }
+.philosophy-sub { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+.phil-cards {
+display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+max-width: 900px; margin: 56px auto 0;
+}
+.phil-card {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 20px; padding: 32px 24px;
+text-align: left; transition: all 0.3s;
+}
+.phil-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+.phil-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.phil-card h3 { font-size: 1.05rem; font-weight: 700; color: var(–sun-light); margin-bottom: 8px; }
+.phil-card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+/* ── STEAM EXPERIMENTS ── */
+.experiments-section { background: #F0FBF9; }
+.experiments-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 24px;
+}
+.exp-card {
+background: var(–white); border-radius: 24px;
+overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+transition: all 0.35s; cursor: pointer;
+border: 2px solid transparent;
+}
+.exp-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); border-color: var(–mint); }
+.exp-header {
+height: 160px; display: flex; align-items: center; justify-content: center;
+font-size: 4rem; position: relative; overflow: hidden;
+}
+.exp-badge {
+position: absolute; top: 12px; right: 12px;
+background: rgba(255,255,255,0.9); border-radius: 100px;
+padding: 4px 12px; font-size: 0.75rem; font-weight: 700;
+}
+.exp-body { padding: 24px; }
+.exp-level {
+display: inline-flex; align-items: center; gap: 4px;
+font-size: 0.75rem; font-weight: 700; margin-bottom: 10px;
+}
+.star { color: var(–sun); }
+.exp-title { font-family: ‘Noto Serif TC’, serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+.exp-desc { font-size: 0.88rem; color: var(–text-light); line-height: 1.7; margin-bottom: 16px; }
+.exp-meta { display: flex; gap: 12px; flex-wrap: wrap; }
+.exp-tag {
+background: var(–cream); border-radius: 100px;
+padding: 4px 12px; font-size: 0.78rem; font-weight: 600; color: var(–text-light);
+}
+.exp-footer {
+padding: 16px 24px;
+border-top: 1px solid var(–cream);
+display: flex; justify-content: space-between; align-items: center;
+}
+.exp-time { font-size: 0.82rem; color: var(–text-light); display: flex; align-items: center; gap: 6px; }
+.exp-btn {
+background: var(–mint); color: var(–white);
+border: none; border-radius: 100px; padding: 8px 20px;
+font-size: 0.85rem; font-weight: 700; cursor: pointer;
+transition: all 0.2s; font-family: ‘Nunito’, sans-serif;
+}
+.exp-btn:hover { background: #5db8b0; transform: scale(1.04); }
+
+/* modal */
+.modal-overlay {
+position: fixed; inset: 0; z-index: 200;
+background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+display: flex; align-items: center; justify-content: center;
+padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal {
+background: var(–white); border-radius: 32px;
+max-width: 560px; width: 100%; max-height: 85vh; overflow-y: auto;
+transform: scale(0.9); transition: transform 0.3s;
+box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+}
+.modal-overlay.active .modal { transform: scale(1); }
+.modal-header { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 6rem; border-radius: 32px 32px 0 0; }
+.modal-body { padding: 32px; }
+.modal-body h3 { font-family: ‘Noto Serif TC’, serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+.modal-section { margin-bottom: 24px; }
+.modal-section h4 { font-size: 0.9rem; font-weight: 700; color: var(–coral); margin-bottom: 10px; letter-spacing: 0.05em; }
+.modal-section ul { list-style: none; }
+.modal-section ul li { font-size: 0.92rem; color: var(–text-light); line-height: 1.8; padding-left: 20px; position: relative; }
+.modal-section ul li::before { content: ‘✦’; position: absolute; left: 0; color: var(–sun); font-size: 0.7rem; top: 4px; }
+.modal-note {
+background: var(–sun-light); border-radius: 16px; padding: 16px 20px;
+font-size: 0.88rem; color: var(–text); line-height: 1.7;
+border-left: 4px solid var(–sun);
+}
+.modal-close {
+display: block; width: 100%; margin-top: 24px;
+background: var(–text); color: var(–white);
+border: none; border-radius: 100px; padding: 14px;
+font-size: 0.95rem; font-weight: 700; cursor: pointer;
+font-family: ‘Nunito’, sans-serif; transition: background 0.2s;
+}
+.modal-close:hover { background: var(–coral); }
+
+/* ── PORTFOLIO ── */
+.portfolio-section { background: var(–cream); }
+.portfolio-filter { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.filter-btn {
+padding: 8px 20px; border-radius: 100px; border: 2px solid #E0D8CC;
+background: transparent; font-size: 0.88rem; font-weight: 700;
+color: var(–text-light); cursor: pointer; transition: all 0.2s;
+font-family: ‘Nunito’, sans-serif;
+}
+.filter-btn.active, .filter-btn:hover { background: var(–coral); color: var(–white); border-color: var(–coral); }
+.portfolio-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 24px;
+}
+.portfolio-item {
+border-radius: 24px; overflow: hidden;
+background: var(–white); box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+transition: all 0.35s; position: relative;
+}
+.portfolio-item:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+.portfolio-img {
+height: 200px; display: flex; align-items: center; justify-content: center;
+font-size: 5rem; position: relative;
+}
+.portfolio-overlay {
+position: absolute; inset: 0;
+background: rgba(0,0,0,0.5);
+display: flex; align-items: center; justify-content: center;
+opacity: 0; transition: opacity 0.3s;
+}
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+.overlay-link {
+background: var(–white); color: var(–text);
+border-radius: 100px; padding: 10px 24px;
+font-size: 0.88rem; font-weight: 700; text-decoration: none;
+}
+.portfolio-info { padding: 20px 24px; }
+.portfolio-cat {
+font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+text-transform: uppercase; margin-bottom: 6px;
+}
+.portfolio-info h3 { font-family: ‘Noto Serif TC’, serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+.portfolio-info p { font-size: 0.85rem; color: var(–text-light); line-height: 1.6; }
+
+/* ── ABOUT ── */
+.about-section {
+background: linear-gradient(135deg, #FFF3B0 0%, #FFE8D6 50%, #E8F5F3 100%);
+}
+.about-inner {
+display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.about-avatar {
+width: 220px; height: 220px; border-radius: 50%;
+background: linear-gradient(135deg, var(–sun), var(–coral));
+display: flex; align-items: center; justify-content: center;
+font-size: 5rem; margin: 0 auto 32px;
+box-shadow: 0 20px 60px rgba(255,139,107,0.35);
+animation: float-card 5s ease-in-out infinite;
+}
+.about-stats {
+display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;
+}
+.stat-card {
+background: var(–white); border-radius: 20px; padding: 20px;
+text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.stat-num { font-family: ‘Caveat’, cursive; font-size: 2.4rem; font-weight: 700; color: var(–coral); }
+.stat-label { font-size: 0.82rem; color: var(–text-light); font-weight: 600; margin-top: 4px; }
+.about-text h2 { margin-bottom: 20px; }
+.about-text p { color: var(–text-light); line-height: 1.9; margin-bottom: 16px; }
+.about-philosophy {
+background: var(–white); border-radius: 20px; padding: 24px;
+border-left: 5px solid var(–coral); margin-top: 24px;
+}
+.about-philosophy p { margin: 0; font-family: ‘Noto Serif TC’, serif; font-size: 1.05rem; color: var(–text); }
+
+/* ── IG CTA ── */
+.ig-section {
+background: var(–text); color: var(–white); text-align: center;
+padding: 80px 48px;
+}
+.ig-section h2 { color: var(–white); margin-bottom: 16px; }
+.ig-section p { color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+.ig-grid { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+.ig-thumb {
+width: 100px; height: 100px; border-radius: 16px;
+display: flex; align-items: center; justify-content: center;
+font-size: 2.8rem; background: rgba(255,255,255,0.06);
+transition: all 0.2s;
+}
+.ig-thumb:hover { transform: scale(1.08); background: rgba(255,255,255,0.12); }
+.ig-btn {
+display: inline-flex; align-items: center; gap: 10px;
+background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+color: var(–white); border-radius: 100px; padding: 14px 36px;
+font-size: 1rem; font-weight: 700; text-decoration: none;
+transition: all 0.25s;
+}
+.ig-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(220,39,67,0.4); }
+
+/* ── FOOTER ── */
+footer {
+background: #2A2420; color: rgba(255,255,255,0.5);
+text-align: center; padding: 40px 48px;
+}
+footer .footer-logo {
+font-family: ‘Caveat’, cursive; font-size: 1.4rem; font-weight: 700;
+color: var(–sun); margin-bottom: 12px;
+}
+footer p { font-size: 0.85rem; }
+
+/* ── responsive ── */
+@media(max-width: 768px) {
+nav { padding: 16px 24px; }
+.nav-links { display: none; }
+section { padding: 72px 24px; }
+.hero { padding: 100px 24px 60px; }
+.hero-inner { grid-template-columns: 1fr; gap: 40px; }
+.hero-visual { order: -1; }
+.phil-cards { grid-template-columns: 1fr; }
+.about-inner { grid-template-columns: 1fr; gap: 40px; }
+.portfolio-grid { grid-template-columns: 1fr 1fr; }
+.ig-thumb { width: 70px; height: 70px; font-size: 2rem; }
+}
+
+/* scroll animation */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+.reveal.visible { opacity: 1; transform: none; }
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="sun-dot"></span>
+    小日光與我
+  </a>
+  <ul class="nav-links">
+    <li><a href="#experiments">STEAM 實驗</a></li>
+    <li><a href="#portfolio">作品集</a></li>
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="dot"></span> 親子 · 創意 · 探索</div>
+      <h1 class="hero-title">小日光<span class="accent">與我</span><br>Little Sunshine & Me</h1>
+      <p class="hero-subtitle">每一天，都是一次小小的發現 ✨</p>
+      <p class="hero-desc">用 STEAM 實驗、手作創意和 Minecraft 探索，<br>記錄那些重要的過程，而不只是美麗的結果。</p>
+      <div class="hero-tags">
+        <span class="tag steam">🔬 STEAM 實驗</span>
+        <span class="tag craft">🎨 手作創意</span>
+        <span class="tag play">⛏️ Minecraft 探索</span>
+        <span class="tag moment">🌞 親子日常</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#experiments" class="btn btn-primary">看看實驗室 →</a>
+        <a href="#portfolio" class="btn btn-outline">作品集</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="sun-illustration">
+        <div class="floating-card card-1"><span class="icon">🔬</span> 今日實驗：醋酸鈉結晶</div>
+        <div class="sun-circle" id="sunCircle"></div>
+        <div class="floating-card card-2"><span class="icon">🌟</span> 重過程 > 重結果</div>
+        <div class="floating-card card-3"><span class="icon">🎮</span> Minecraft 創作中</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+
+<section class="philosophy">
+  <div class="max-w">
+    <div class="philosophy-quote">
+      「我們相信，每一個<span class="highlight">嘗試的過程</span>，<br>都比最終的結果更值得被珍惜。」
+    </div>
+    <p class="philosophy-sub">Little Sunshine & Me · 品牌核心理念</p>
+    <div class="phil-cards">
+      <div class="phil-card">
+        <div class="phil-icon">🔬</div>
+        <h3>重過程 > 重結果</h3>
+        <p>實驗失敗了也沒關係，那一刻眼神裡的好奇，才是真正的學習。</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-icon">💛</div>
+        <h3>溫暖陪伴</h3>
+        <p>不是完美的親子時光，而是真實的、帶著小失誤的每一天。</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-icon">🌱</div>
+        <h3>自然成長</h3>
+        <p>孩子有自己的節奏，我們的角色是在旁邊慢慢等待和支持。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEAM EXPERIMENTS -->
+
+<section class="experiments-section" id="experiments">
+  <div class="max-w">
+    <div class="section-label reveal">STEAM 實驗室</div>
+    <h2 class="reveal">跟孩子一起<br>把家變成實驗室 🧪</h2>
+    <p class="section-desc reveal">每個實驗都有詳細步驟、材料清單，還有科學原理說明，讓學習在廚房、客廳隨時發生。</p>
+    <div class="experiments-grid" id="expGrid"></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section class="portfolio-section" id="portfolio">
+  <div class="max-w">
+    <div class="section-label reveal">作品集</div>
+    <h2 class="reveal">我們一起做過的<br>每一件小事 🌈</h2>
+    <p class="section-desc reveal">從 STEAM 實驗到手作、從 Minecraft 建築到親子日常，每一個作品都是一段回憶。</p>
+    <div class="portfolio-filter reveal">
+      <button class="filter-btn active" onclick="filterPortfolio('all', this)">全部</button>
+      <button class="filter-btn" onclick="filterPortfolio('steam', this)">STEAM</button>
+      <button class="filter-btn" onclick="filterPortfolio('craft', this)">手作</button>
+      <button class="filter-btn" onclick="filterPortfolio('minecraft', this)">Minecraft</button>
+      <button class="filter-btn" onclick="filterPortfolio('moment', this)">日常</button>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about-section" id="about">
+  <div class="max-w about-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="about-avatar">👩‍👧</div>
+      <div class="about-stats">
+        <div class="stat-card"><div class="stat-num">50+</div><div class="stat-label">STEAM 實驗</div></div>
+        <div class="stat-card"><div class="stat-num">2年</div><div class="stat-label">品牌經營</div></div>
+        <div class="stat-card"><div class="stat-num">💛</div><div class="stat-label">無數個當下</div></div>
+        <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">好奇心</div></div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-label">關於我們</div>
+      <h2>一個媽媽，<br>和她的小日光</h2>
+      <p>《小日光與我》是一個記錄親子探索時光的品牌。我不是科學家，也不是完美的媽媽——只是一個喜歡帶著孩子動手試試看的人。</p>
+      <p>我們做過讓廚房變成一片霧的乾冰實驗，也有過讓整張桌子變成調色盤的手作日。每一次的「哇！」都值得被記錄下來。</p>
+      <div class="about-philosophy">
+        <p>✨ 重過程 > 重結果，是我們最相信的事。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM CTA -->
+
+<section class="ig-section" id="instagram">
+  <div class="max-w">
+    <h2>來 Instagram<br>找我們玩吧 📸</h2>
+    <p>每天分享親子創意時光，歡迎來交流！</p>
+    <div class="ig-grid">
+      <div class="ig-thumb">🧪</div>
+      <div class="ig-thumb">🎨</div>
+      <div class="ig-thumb">⛏️</div>
+      <div class="ig-thumb">🌱</div>
+      <div class="ig-thumb">🔭</div>
+      <div class="ig-thumb">🍳</div>
+    </div>
+    <a href="https://www.instagram.com/littlesunandme/" target="_blank" class="ig-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      @littlesunandme
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">☀️ 小日光與我</div>
+  <p>Little Sunshine & Me · 用好奇心，照亮每一個平凡的日子</p>
+  <p style="margin-top:8px; font-size:0.78rem;">© 2025 小日光與我 · Made with 💛 in Taiwan</p>
+</footer>
+
+<!-- MODAL -->
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+// ── DATA ──
+const experiments = [
+  {
+    emoji: '🌋', bg: '#FFF3B0', badge: 'Science',
+    level: 2, title: '小火山爆發',
+    desc: '用小蘇打和醋，在家做出讓人驚叫的迷你火山爆發！',
+    tags: ['化學', '安全無毒', '5歲+'],
+    time: '約 20 分鐘',
+    materials: ['小蘇打粉 2匙', '白醋 半杯', '食用色素（紅色）', '碗或紙杯', '托盤（防溢）'],
+    steps: ['在碗中加入小蘇打粉', '滴入幾滴紅色食用色素', '準備好，慢慢倒入白醋', '觀察泡沫噴發的瞬間！', '討論：為什麼會起泡泡？'],
+    note: '💡 科學原理：小蘇打（鹼性）和醋（酸性）相遇，產生二氧化碳氣體，就是那些泡泡！重過程最重要——讓孩子猜猜看倒多少會爆發最多泡泡。'
+  },
+  {
+    emoji: '🌈', bg: '#E8F5F3', badge: 'Art+Science',
+    level: 1, title: '牛奶彩虹畫',
+    desc: '在牛奶裡加一滴洗碗精，看顏色像魔法一樣擴散開來！',
+    tags: ['物理', '色彩', '3歲+'],
+    time: '約 10 分鐘',
+    materials: ['全脂牛奶 1杯', '食用色素（多色）', '洗碗精少許', '棉花棒', '淺盤'],
+    steps: ['將牛奶倒入淺盤，約1公分高', '在牛奶表面滴幾滴不同顏色', '棉花棒沾一點洗碗精', '輕輕點在牛奶中央，見證奇蹟！', '觀察顏色如何流動和混合'],
+    note: '💡 科學原理：牛奶裡有脂肪分子，洗碗精破壞了脂肪的表面張力，讓顏色快速擴散移動！可以讓孩子預測顏色會怎麼混合。'
+  },
+  {
+    emoji: '❄️', bg: '#EEF0FF', badge: 'Chemistry',
+    level: 3, title: '滴水成山：醋酸鈉結晶',
+    desc: '讓液體瞬間「凍結」成冰塔形狀，就像冬天魔法一樣神奇！',
+    tags: ['化學', '進階', '7歲+'],
+    time: '約 45 分鐘',
+    materials: ['醋酸鈉（網路可購）3杯', '水 1杯', '溫度計', '鍋子', '玻璃杯'],
+    steps: ['鍋中加水和醋酸鈉，加熱溶解', '過濾後倒入玻璃杯，靜置冷卻', '輕輕放入一粒結晶當種子', '看著液體瞬間從種子開始結晶！', '試試不同溫度，觀察速度差異'],
+    note: '💡 科學原理：過飽和溶液在觸碰到「晶種」時，會快速結晶析出，這個過程叫成核作用。這個實驗容易失敗，失敗了也沒關係，一起找原因重來！'
+  },
+  {
+    emoji: '🌱', bg: '#F0FBE8', badge: 'Biology',
+    level: 1, title: '豆芽生長日記',
+    desc: '只需要一杯水和幾顆綠豆，觀察生命的誕生過程。',
+    tags: ['生物', '觀察', '3歲+'],
+    time: '持續一週',
+    materials: ['綠豆 10-15粒', '透明杯子', '棉花或廚房紙巾', '水', '日記本（記錄用）'],
+    steps: ['用濕棉花鋪在杯底', '放上綠豆，確保碰到棉花', '放在有光的地方，每天補水', '每天觀察並畫下變化', '第3-5天，嫩芽會冒出來！'],
+    note: '💡 重點在記錄過程！讓孩子每天量量芽的長度，畫折線圖。比起最後長出來的芽，每天的觀察與期待才是最珍貴的。'
+  },
+  {
+    emoji: '🌊', bg: '#FFF0E8', badge: 'Physics',
+    level: 2, title: '海洋瓶：不混合的水',
+    desc: '油和水為什麼不能混在一起？做一瓶永遠搖不混的海洋！',
+    tags: ['物理', '感統', '4歲+'],
+    time: '約 15 分鐘',
+    materials: ['透明寶特瓶', '嬰兒油', '水', '藍色食用色素', '貝殼或亮片（裝飾）'],
+    steps: ['瓶中加水到一半，染成藍色', '放入貝殼和亮片', '緩緩倒入嬰兒油（不要搖）', '蓋緊瓶蓋，可以用熱熔膠封住', '傾斜搖晃，看「海浪」！'],
+    note: '💡 科學原理：水和油密度不同（油比水輕），且互不相溶，所以永遠分層。搖晃時油水短暫混合，靜止後又分開——就像真實的波浪。'
+  },
+  {
+    emoji: '🎨', bg: '#FFF5FF', badge: 'Art+Science',
+    level: 2, title: '吹畫蝴蝶',
+    desc: '把顏料「吹」成一隻蝴蝶，左右對稱的驚喜在展開的那一刻！',
+    tags: ['藝術', '對稱', '4歲+'],
+    time: '約 20 分鐘',
+    materials: ['水彩或廣告顏料', '白紙 A4', '吸管', '水'],
+    steps: ['將紙對折，打開', '在其中一半滴幾滴顏料', '用吸管輕吹，讓顏料擴散', '趁顏料還濕，對折壓緊', '打開，一隻獨一無二的蝴蝶！'],
+    note: '💡 數學概念：對稱！讓孩子先猜猜展開後會長什麼樣子。每次結果都不一樣，這就是藝術最美的地方——沒有標準答案。'
+  }
+];
+
+const portfolio = [
+  { cat: 'steam', catLabel: 'STEAM', emoji: '🌋', bg: '#FFF3B0', title: '火山爆發記錄', desc: '第一次做的時候，眼睛瞪得好大！' },
+  { cat: 'craft', catLabel: '手作', emoji: '🎭', bg: '#FFE8D6', title: '紙箱劇場', desc: '一個紙箱，演了三個故事。' },
+  { cat: 'minecraft', catLabel: 'Minecraft', emoji: '🏰', bg: '#E8F5F3', title: '我們的小鎮', desc: '花了兩週一起蓋的，每一塊磚都有故事。' },
+  { cat: 'moment', catLabel: '日常', emoji: '☀️', bg: '#FFF5E0', title: '早晨的陽光', desc: '什麼都不做，只是坐在窗邊看光。' },
+  { cat: 'steam', catLabel: 'STEAM', emoji: '🌈', bg: '#E8F5F3', title: '牛奶彩虹', desc: '她說她要把彩虹留下來。' },
+  { cat: 'craft', catLabel: '手作', emoji: '🎨', bg: '#F5E8FF', title: '自然染布', desc: '用洛神花和薑黃，染出了最美的顏色。' },
+  { cat: 'minecraft', catLabel: 'Minecraft', emoji: '🌳', bg: '#E8FFE8', title: '秘密花園', desc: '她說這是給我們的基地，不讓外人進來。' },
+  { cat: 'moment', catLabel: '日常', emoji: '🍳', bg: '#FFF3E0', title: '週末早餐', desc: '蛋炒焦了，但她說是最好吃的一次。' },
+];
+
+// ── RENDER EXPERIMENTS ──
+const expGrid = document.getElementById('expGrid');
+experiments.forEach((exp, i) => {
+  const stars = '★'.repeat(exp.level) + '☆'.repeat(3 - exp.level);
+  const card = document.createElement('div');
+  card.className = 'exp-card reveal';
+  card.innerHTML = `
+    <div class="exp-header" style="background:${exp.bg}">
+      ${exp.emoji}
+      <span class="exp-badge">${exp.badge}</span>
+    </div>
+    <div class="exp-body">
+      <div class="exp-level"><span class="star">${stars}</span> 難度</div>
+      <h3 class="exp-title">${exp.title}</h3>
+      <p class="exp-desc">${exp.desc}</p>
+      <div class="exp-meta">${exp.tags.map(t=>`<span class="exp-tag">${t}</span>`).join('')}</div>
+    </div>
+    <div class="exp-footer">
+      <span class="exp-time">⏱ ${exp.time}</span>
+      <button class="exp-btn" onclick="openModal(${i})">看步驟 →</button>
+    </div>`;
+  expGrid.appendChild(card);
+});
+
+// ── RENDER PORTFOLIO ──
+const portGrid = document.getElementById('portfolioGrid');
+function renderPortfolio(filter) {
+  portGrid.innerHTML = '';
+  portfolio.filter(p => filter === 'all' || p.cat === filter).forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'portfolio-item';
+    item.setAttribute('data-cat', p.cat);
+    item.innerHTML = `
+      <div class="portfolio-img" style="background:${p.bg}">
+        ${p.emoji}
+        <div class="portfolio-overlay">
+          <a href="#" class="overlay-link">查看</a>
+        </div>
+      </div>
+      <div class="portfolio-info">
+        <div class="portfolio-cat" style="color:var(--coral)">${p.catLabel}</div>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+      </div>`;
+    portGrid.appendChild(item);
+  });
+}
+renderPortfolio('all');
+
+function filterPortfolio(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPortfolio(filter);
+}
+
+// ── MODAL ──
+function openModal(i) {
+  const exp = experiments[i];
+  const modal = document.getElementById('modalContent');
+  modal.innerHTML = `
+    <div class="modal-header" style="background:${exp.bg}">${exp.emoji}</div>
+    <div class="modal-body">
+      <h3>${exp.title}</h3>
+      <div class="modal-section">
+        <h4>🛒 材料清單</h4>
+        <ul>${exp.materials.map(m=>`<li>${m}</li>`).join('')}</ul>
+      </div>
+      <div class="modal-section">
+        <h4>📋 步驟</h4>
+        <ul>${exp.steps.map(s=>`<li>${s}</li>`).join('')}</ul>
+      </div>
+      <div class="modal-note">${exp.note}</div>
+      <button class="modal-close" onclick="closeModal()">關閉</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('active');
+  }
+}
+
+// ── SUN RAYS ──
+const sun = document.getElementById('sunCircle');
+for(let i=0;i<12;i++){
+  const ray = document.createElement('div');
+  ray.className = 'sun-ray';
+  const angle = i * 30;
+  const len = 30 + Math.random()*20;
+  ray.style.cssText = `height:${len}px; transform: rotate(${angle}deg) translateY(-${140+len}px);`;
+  sun.appendChild(ray);
+}
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
