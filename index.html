@@ -483,6 +483,23 @@ section { padding: 64px 20px; }
 /* scroll animation */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
 .reveal.visible { opacity: 1; transform: none; }
+
+/* ig video */
+.exp-video-btn, .portfolio-video-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    margin-top: 8px;
+    background: var(--coral);
+    color: var(--white);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+.exp-video-btn:hover, .portfolio-video-btn:hover {
+    background: #e8704f;
+  }
 </style>
 
 </head>
@@ -569,7 +586,6 @@ section { padding: 64px 20px; }
 </section>
 
 <!-- STEAM EXPERIMENTS -->
-
 <section class="experiments-section" id="experiments">
   <div class="max-w">
     <div class="section-label reveal">STEAM 實驗室</div>
@@ -580,7 +596,6 @@ section { padding: 64px 20px; }
 </section>
 
 <!-- PORTFOLIO -->
-
 <section class="portfolio-section" id="portfolio">
   <div class="max-w">
     <div class="section-label reveal">作品集</div>
@@ -684,6 +699,7 @@ function renderExperiments() {
       <div class="exp-footer">
         <span class="exp-time">⏱ ${exp.time}</span>
         <button class="exp-btn" onclick="openModal(${i})">看步驟 →</button>
+        <a href="${exp.videoLink}" target="_blank" class="exp-video-btn">觀看影片</a> 
       </div>`;
     expGrid.appendChild(card);
   });
@@ -710,6 +726,7 @@ function renderPortfolio(filter) {
         <div class="portfolio-cat" style="color:var(--coral)">${p.catLabel}</div>
         <h3>${p.title}</h3>
         <p>${p.desc}</p>
+        <a href="${p.videoLink}" target="_blank" class="portfolio-video-btn">觀看影片</a>
       </div>`;
     portGrid.appendChild(item);
   });
