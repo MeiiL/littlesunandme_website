@@ -1,0 +1,45 @@
+:root {
+  --sun: #FFD84D;
+  --cream: #FFFDF5;
+  --text: #3A3226;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', 'Noto Serif TC', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  padding: 16px 24px;
+  background: #fffdf5;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(160deg, #FFFDF5, #FFF3B0);
+  text-align: center;
+}
+
+/* CARD */
+.exp-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: white;
+  margin: 12px;
+}
