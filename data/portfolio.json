@@ -1,10 +1,10 @@
 [
-  { "cat": "steam", "catLabel": "STEAM", "emoji": "🌋", "bg": "#FFF3B0", "title": "火山爆發記錄", "desc": "第一次做的時候，眼睛瞪得好大！" },
-  { "cat": "craft", "catLabel": "手作", "emoji": "🎭", "bg": "#FFE8D6", "title": "紙箱劇場", "desc": "一個紙箱，演了三個故事。" },
-  { "cat": "minecraft", "catLabel": "Minecraft", "emoji": "🏰", "bg": "#E8F5F3", "title": "我們的小鎮", "desc": "花了兩週一起蓋的，每一塊磚都有故事。" },
-  { "cat": "moment", "catLabel": "日常", "emoji": "☀️", "bg": "#FFF5E0", "title": "早晨的陽光", "desc": "什麼都不做，只是坐在窗邊看光。" },
-  { "cat": "steam", "catLabel": "STEAM", "emoji": "🌈", "bg": "#E8F5F3", "title": "牛奶彩虹", "desc": "她說她要把彩虹留下來。" },
-  { "cat": "craft", "catLabel": "手作", "emoji": "🎨", "bg": "#F5E8FF", "title": "自然染布", "desc": "用洛神花和薑黃，染出了最美的顏色。" },
-  { "cat": "minecraft", "catLabel": "Minecraft", "emoji": "🌳", "bg": "#E8FFE8", "title": "秘密花園", "desc": "她說這是給我們的基地，不讓外人進來。" },
-  { "cat": "moment", "catLabel": "日常", "emoji": "🍳", "bg": "#FFF3E0", "title": "週末早餐", "desc": "蛋炒焦了，但她說是最好吃的一次。" }
+  { "cat": "steam", "catLabel": "STEAM", "emoji": "🌋", "bg": "#FFF3B0", "title": "火山爆發記錄", "desc": "第一次做的時候，眼睛瞪得好大！", "videoLink": "https://www.youtube.com/watch?v=你的影片ID" },
+  { "cat": "craft", "catLabel": "手作", "emoji": "🎭", "bg": "#FFE8D6", "title": "紙箱劇場", "desc": "一個紙箱，演了三個故事。", "videoLink": "https://www.youtube.com/watch?v=你的影片ID" },
+  { "cat": "minecraft", "catLabel": "Minecraft", "emoji": "🏰", "bg": "#E8F5F3", "title": "我們的小鎮", "desc": "花了兩週一起蓋的，每一塊磚都有故事。", "videoLink": "https://www.youtube.com/watch?v=你的影片ID" },
+  { "cat": "moment", "catLabel": "日常", "emoji": "☀️", "bg": "#FFF5E0", "title": "早晨的陽光", "desc": "什麼都不做，只是坐在窗邊看光。", "videoLink": "https://www.youtube.com/watch?v=你的影片ID" },
+  { "cat": "steam", "catLabel": "STEAM", "emoji": "🌈", "bg": "#E8F5F3", "title": "牛奶彩虹", "desc": "她說她要把彩虹留下來。", "videoLink": "https://www.youtube.com/watch?v=你的影片ID" },
+  { "cat": "craft", "catLabel": "手作", "emoji": "🎨", "bg": "#F5E8FF", "title": "自然染布", "desc": "用洛神花和薑黃，染出了最美的顏色。", "videoLink": "https://www.youtube.com/watch?v=你的影片ID" },
+  { "cat": "minecraft", "catLabel": "Minecraft", "emoji": "🌳", "bg": "#E8FFE8", "title": "秘密花園", "desc": "她說這是給我們的基地，不讓外人進來。" , "videoLink": "https://www.youtube.com/watch?v=你的影片ID" },
+  { "cat": "moment", "catLabel": "日常", "emoji": "🍳", "bg": "#FFF3E0", "title": "週末早餐", "desc": "蛋炒焦了，但她說是最好吃的一次。", "videoLink": "https://www.youtube.com/watch?v=你的影片ID" }
 ]
