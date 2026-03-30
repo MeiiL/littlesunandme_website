@@ -1,15 +1,145 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小日光與我 Little Sunshine & Me</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小日光與我 Little Sunshine & Me</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+<style>
+:root {
+  --sun: #FFD84D;
+  --sun-light: #FFF3B0;
+  --coral: #FF8B6B;
+  --mint: #7ECAC3;
+  --sky: #A8D8EA;
+  --lavender: #C3B1E1;
+  --leaf: #90C67C;
+  --cream: #FFFDF5;
+  --text: #3A3226;
+  --text-light: #7A6E61;
+  --white: #FFFFFF;
+}
+
+/* ✅ 修正 reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Nunito', 'Noto Serif TC', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(255,253,245,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--sun-light);
+}
+
+.nav-logo {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.nav-logo .sun-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 0 4px var(--sun-light);
+  animation: pulse-sun 3s ease-in-out infinite;
+}
+
+@keyframes pulse-sun {
+  0%,100%{ box-shadow: 0 0 0 4px var(--sun-light); }
+  50%{ box-shadow: 0 0 0 8px rgba(255,216,77,0.2); }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 120px 48px 80px;
+  background: linear-gradient(160deg, #FFFDF5 0%, #FFF3B0 40%, #FFE8D6 70%, #E8F5F3 100%);
+}
+
+.hero-inner {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 700;
+}
+
+.hero-title .accent { color: var(--coral); }
+
+.hero-subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: var(--mint);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* SUN */
+.sun-circle {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFE566, #FFD84D, #FFBA00);
+  margin: 40px auto;
+  animation: rotate-sun 20s linear infinite;
+  -webkit-animation: rotate-sun 20s linear infinite;
+}
+
+@keyframes rotate-sun {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes rotate-sun {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+
+/* SECTION */
+section { padding: 100px 48px; }
+
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--coral);
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--coral);
+}
+
+</style>
 </head>
 
 <body>
@@ -22,15 +152,26 @@
 </nav>
 
 <section class="hero">
-  <h1>Little Sunshine & Me ☀️</h1>
-  <p>每一天，都是一次小小的發現 ✨</p>
+  <div class="hero-inner">
+    <div>
+      <h1 class="hero-title">小日光<span class="accent">與我</span></h1>
+      <p class="hero-subtitle">每一天，都是一次小小的發現 ✨</p>
+      <p class="hero-desc">用 STEAM 實驗與創意記錄生活</p>
+    </div>
+    <div>
+      <div class="sun-circle"></div>
+    </div>
+  </div>
 </section>
 
-<section id="experiments">
-  <h2>STEAM 實驗</h2>
-  <div id="expGrid"></div>
-</section>
+<script>
+// ✅ 修正 fetch 路徑（GitHub Pages）
+Promise.all([
+  fetch('./data/experiments.json').then(r => r.json()),
+  fetch('./data/portfolio.json').then(r => r.json())
+])
+.catch(err => console.error(err));
+</script>
 
-<script src="js/main.js"></script>
 </body>
 </html>
