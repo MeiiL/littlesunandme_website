@@ -2,17 +2,48 @@
 
 <html lang="zh-TW">
 <head>
-<meta name="description" content="親子STEAM實驗、手作創意與Minecraft探索，和孩子一起把家變成實驗室。">
-<meta name="keywords" content="親子實驗, STEAM教育, 親子手作, 科學實驗, 小日光與我">
-<!-- Open Graph (分享用) -->
-<meta property="og:title" content="小日光與我 Little Sunshine & Me">
-<meta property="og:description" content="每一天，都是一次小小的發現 ✨">
-<meta property="og:image" content="https://github.com/MeiiL/littlesunandme_website/cover.jpg">
-<meta property="og:type" content="website">
-  
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小日光與我 Little Sunshine & Me</title>
+<meta name="description" content="親子STEAM實驗、手作創意與Minecraft探索，和孩子一起把家變成實驗室。記錄重要的過程，而不只是美麗的結果。">
+<meta name="keywords" content="親子實驗, STEAM教育, 親子手作, 科學實驗, 小日光與我, 親子活動, 兒童科學, 親子Minecraft">
+<meta name="author" content="小日光與我 Little Sunshine & Me">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meill.github.io/littlesunandme_website/">
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="小日光與我 Little Sunshine & Me">
+<meta property="og:title" content="小日光與我 Little Sunshine & Me">
+<meta property="og:description" content="親子STEAM實驗、手作創意與Minecraft探索，和孩子一起把家變成實驗室。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meill.github.io/littlesunandme_website/">
+<meta property="og:image" content="https://meill.github.io/littlesunandme_website/cover.jpg">
+<meta property="og:locale" content="zh_TW">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="小日光與我 Little Sunshine & Me">
+<meta name="twitter:description" content="親子STEAM實驗、手作創意與Minecraft探索，和孩子一起把家變成實驗室。">
+<meta name="twitter:image" content="https://meill.github.io/littlesunandme_website/cover.jpg">
+
+<!-- JSON-LD 結構化資料 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "小日光與我 Little Sunshine & Me",
+  "description": "親子STEAM實驗、手作創意與Minecraft探索，和孩子一起把家變成實驗室。",
+  "url": "https://meill.github.io/littlesunandme_website/",
+  "image": "https://meill.github.io/littlesunandme_website/cover.jpg",
+  "inLanguage": "zh-TW",
+  "author": {
+    "@type": "Person",
+    "name": "小日光與我"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -48,6 +79,7 @@ display: flex; align-items: center; justify-content: space-between;
 padding: 16px 48px;
 background: rgba(255,253,245,0.92);
 backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
 border-bottom: 2px solid var(--sun-light);
 }
 .nav-logo {
@@ -464,7 +496,19 @@ footer p { font-size: 0.85rem; }
 /* ── responsive ── */
 @media(max-width: 768px) {
 nav { padding: 16px 24px; }
-.nav-links { display: none; }
+.nav-toggle { display: flex; }
+.nav-links {
+  display: none;
+  position: fixed; top: 64px; left: 0; right: 0;
+  flex-direction: column; gap: 0;
+  background: rgba(255,253,245,0.98);
+  border-bottom: 2px solid var(--sun-light);
+  padding: 12px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.nav-links.open { display: flex; }
+.nav-links li { width: 100%; }
+.nav-links a { display: block; padding: 14px 24px; font-size: 1rem; }
 section { padding: 64px 20px; }
 .hero { padding: 100px 20px 60px; }
 .hero-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -479,6 +523,30 @@ section { padding: 64px 20px; }
 .modal-header { height: 140px; font-size: 4rem; }
 .modal-body { padding: 20px; }
 }
+
+/* ── HAMBURGER ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 101;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* scroll animation */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
@@ -528,6 +596,9 @@ section { padding: 64px 20px; }
     <span class="sun-dot"></span>
     小日光與我
   </a>
+  <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#experiments">STEAM 實驗</a></li>
     <li><a href="#portfolio">作品集</a></li>
@@ -667,7 +738,7 @@ section { padding: 64px 20px; }
       <div class="ig-thumb">🔭</div>
       <div class="ig-thumb">🍳</div>
     </div>
-    <a href="https://www.instagram.com/littlesunandme/" target="_blank" class="ig-btn">
+    <a href="https://www.instagram.com/littlesunandme/" target="_blank" rel="noopener noreferrer" class="ig-btn">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
       @littlesunandme
     </a>
@@ -791,6 +862,22 @@ for(let i=0;i<12;i++){
   ray.style.cssText = `height:${len}px; transform: rotate(${angle}deg) translateY(-${140+len}px);`;
   sun.appendChild(ray);
 }
+
+// ── HAMBURGER MENU ──
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks  = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  });
+});
 
 // ── SCROLL REVEAL ──
 const observer = new IntersectionObserver(entries => {
