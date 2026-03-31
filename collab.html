@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>合作洽詢 ｜ 小日光與我 Little Sunshine & Me</title>
+  <meta name="description" content="與小日光與我合作，觸及台灣親子家庭。品牌業配、活動邀請、課程合作，歡迎洽詢。" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sun: #FFD84D;
+      --sun-light: #FFF3B0;
+      --coral: #FF8B6B;
+      --mint: #7ECAC3;
+      --sky: #A8D8EA;
+      --lavender: #C3B1E1;
+      --leaf: #90C67C;
+      --cream: #FFFDF5;
+      --text: #3A3226;
+      --text-light: #7A6E61;
+      --white: #FFFFFF;
+    }
+
+```
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito', 'Noto Serif TC', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(255,253,245,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--sun-light);
+}
+.nav-logo {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--text); text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.sun-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--sun);
+  box-shadow: 0 0 0 4px var(--sun-light);
+  flex-shrink: 0;
+  animation: pulse-sun 3s ease-in-out infinite;
+}
+@keyframes pulse-sun {
+  0%,100%{ box-shadow: 0 0 0 4px var(--sun-light); }
+  50%{ box-shadow: 0 0 0 8px rgba(255,216,77,0.2); }
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--text-light);
+  font-weight: 600; font-size: 0.95rem;
+  position: relative; padding-bottom: 2px; transition: color 0.2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--coral);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--coral); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--coral); }
+.nav-links a.active::after { width: 100%; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 60vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 140px 48px 80px;
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #FFFDF5 0%, #FFF3B0 40%, #FFE8D6 70%, #E8F5F3 100%);
+  text-align: center;
+}
+.hero-blobs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.blob {
+  position: absolute; border-radius: 50%;
+  opacity: 0.3; filter: blur(60px);
+  animation: float-blob 8s ease-in-out infinite;
+}
+.blob-1 { width: 350px; height: 350px; background: var(--sun); top: -80px; right: -60px; }
+.blob-2 { width: 250px; height: 250px; background: var(--mint); bottom: 30px; left: -60px; animation-delay: 3s; }
+@keyframes float-blob {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(15px,-20px) scale(1.04); }
+}
+.hero-inner { position: relative; z-index: 1; max-width: 700px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white); border: 2px solid var(--sun);
+  border-radius: 100px; padding: 6px 20px;
+  font-size: 0.82rem; font-weight: 700; color: var(--text-light);
+  margin-bottom: 28px; letter-spacing: 0.05em;
+}
+.hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700; line-height: 1.3;
+  color: var(--text); margin-bottom: 16px;
+}
+.hero-title .accent { color: var(--coral); }
+.hero-desc {
+  font-size: 1.05rem; color: var(--text-light);
+  line-height: 1.8; margin-bottom: 0;
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-inner { animation: fade-up 0.8s ease both; }
+
+/* ── COMMON ── */
+.max-w { max-width: 1100px; margin: 0 auto; }
+section { padding: 80px 48px; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Caveat', cursive; font-size: 1.1rem; font-weight: 700;
+  color: var(--coral); margin-bottom: 12px;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 3px; background: var(--coral); border-radius: 2px; }
+h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700; line-height: 1.35; margin-bottom: 16px;
+}
+.section-desc { color: var(--text-light); font-size: 1rem; line-height: 1.8; max-width: 560px; margin-bottom: 48px; }
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  background: #5C4A32; color: var(--white);
+  padding: 40px 48px;
+}
+.stats-inner {
+  max-width: 900px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; text-align: center;
+}
+.stat-item {}
+.stat-num {
+  font-family: 'Caveat', cursive;
+  font-size: 2.6rem; font-weight: 700; color: var(--sun);
+  line-height: 1;
+}
+.stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 6px; font-weight: 600; }
+
+/* ── COLLAB TYPES ── */
+.collab-section { background: var(--cream); }
+.collab-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.collab-card {
+  background: var(--white); border-radius: 24px;
+  padding: 32px 28px; border: 2px solid transparent;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s;
+}
+.collab-card:hover { border-color: var(--coral); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+.collab-icon { font-size: 2.6rem; margin-bottom: 16px; }
+.collab-card h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--text);
+}
+.collab-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.8; margin-bottom: 16px; }
+.collab-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.collab-tag {
+  background: var(--cream); border-radius: 100px;
+  padding: 4px 12px; font-size: 0.78rem; font-weight: 600; color: var(--text-light);
+}
+
+/* ── AUDIENCE ── */
+.audience-section { background: #F0FBF9; }
+.audience-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-bottom: 48px;
+}
+.audience-card {
+  background: var(--white); border-radius: 20px; padding: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05); text-align: center;
+}
+.audience-icon { font-size: 2rem; margin-bottom: 12px; }
+.audience-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+.audience-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+.audience-note {
+  background: var(--sun-light); border-radius: 20px; padding: 24px 32px;
+  border-left: 5px solid var(--sun); max-width: 700px;
+}
+.audience-note p { font-size: 0.95rem; color: var(--text); line-height: 1.8; }
+.audience-note strong { color: var(--coral); }
+
+/* ── FORM ── */
+.form-section { background: var(--cream); }
+.form-wrap {
+  max-width: 680px; margin: 0 auto;
+  background: var(--white); border-radius: 32px;
+  padding: 48px; box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.form-group { margin-bottom: 24px; }
+.form-group label {
+  display: block; font-size: 0.88rem; font-weight: 700;
+  color: var(--text); margin-bottom: 8px;
+}
+.form-group label span { color: var(--coral); margin-left: 2px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 14px 18px;
+  border: 2px solid #E8E2D8; border-radius: 14px;
+  font-size: 0.95rem; font-family: 'Nunito', sans-serif;
+  color: var(--text); background: var(--cream);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none; appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 4px rgba(255,139,107,0.12);
+}
+.form-group textarea { min-height: 140px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-submit {
+  width: 100%; padding: 16px;
+  background: var(--coral); color: var(--white);
+  border: none; border-radius: 100px;
+  font-size: 1rem; font-weight: 700; font-family: 'Nunito', sans-serif;
+  cursor: pointer; transition: all 0.25s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.form-submit:hover { background: #e8704f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,139,107,0.4); }
+.form-note {
+  text-align: center; margin-top: 16px;
+  font-size: 0.82rem; color: var(--text-light);
+}
+/* success state */
+.form-success {
+  display: none; text-align: center; padding: 40px 20px;
+}
+.form-success .success-icon { font-size: 4rem; margin-bottom: 16px; }
+.form-success h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 12px;
+}
+.form-success p { color: var(--text-light); line-height: 1.8; }
+
+/* ── FOOTER ── */
+footer {
+  background: #2A2420; color: rgba(255,255,255,0.5);
+  text-align: center; padding: 40px 48px;
+}
+.footer-logo {
+  font-family: 'Caveat', cursive; font-size: 1.4rem; font-weight: 700;
+  color: var(--sun); margin-bottom: 12px;
+}
+footer p { font-size: 0.85rem; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  section { padding: 60px 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .stats-strip { padding: 32px 20px; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .collab-grid { grid-template-columns: 1fr; }
+  .audience-grid { grid-template-columns: 1fr; }
+  .form-wrap { padding: 28px 20px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+```
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="sun-dot"></span>
+    小日光與我
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#experiments">STEAM 實驗</a></li>
+    <li><a href="index.html#portfolio">作品集</a></li>
+    <li><a href="index.html#about">關於我們</a></li>
+    <li><a href="collab.html" class="active">合作洽詢</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span> 品牌合作 · 活動邀請 · 課程共創</div>
+    <h1 class="hero-title">讓小日光<span class="accent">照進</span><br>你的品牌故事</h1>
+    <p class="hero-desc">
+      我們相信，好的合作是兩個品牌共同創造真實的親子時刻。<br>
+      如果你的產品也在乎「過程」多過「結果」，我們可以聊聊。
+    </p>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">STEAM 實驗紀錄</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2年</div>
+      <div class="stat-label">品牌深耕</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">親子</div>
+      <div class="stat-label">核心受眾</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">💛</div>
+      <div class="stat-label">真實溫暖的內容風格</div>
+    </div>
+  </div>
+</div>
+
+<!-- COLLAB TYPES -->
+
+<section class="collab-section">
+  <div class="max-w">
+    <div class="section-label reveal">合作類型</div>
+    <h2 class="reveal">我們可以一起做什麼</h2>
+    <p class="section-desc reveal">每一次合作，都希望是真實的，不是硬塞廣告的那種。</p>
+
+```
+<div class="collab-grid">
+  <div class="collab-card reveal">
+    <div class="collab-icon">🧪</div>
+    <h3>品牌內容合作</h3>
+    <p>以小日光的風格將你的產品融入 STEAM 實驗或手作內容中，呈現真實的親子使用情境。</p>
+    <div class="collab-tags">
+      <span class="collab-tag">IG 貼文</span>
+      <span class="collab-tag">Reels 短影片</span>
+      <span class="collab-tag">限時動態</span>
+    </div>
+  </div>
+
+  <div class="collab-card reveal">
+    <div class="collab-icon">🎪</div>
+    <h3>活動 / 工作坊邀請</h3>
+    <p>親子館、圖書館、學校、品牌快閃活動，邀請小日光主持 STEAM 實驗或手作工作坊。</p>
+    <div class="collab-tags">
+      <span class="collab-tag">實體工作坊</span>
+      <span class="collab-tag">線上直播課</span>
+      <span class="collab-tag">活動主持</span>
+    </div>
+  </div>
+
+  <div class="collab-card reveal">
+    <div class="collab-icon">📦</div>
+    <h3>聯名材料包 / 產品共創</h3>
+    <p>與品牌共同設計親子實驗材料包或手作套件，小日光負責內容設計，你負責生產出貨。</p>
+    <div class="collab-tags">
+      <span class="collab-tag">材料包設計</span>
+      <span class="collab-tag">品牌聯名</span>
+      <span class="collab-tag">限量商品</span>
+    </div>
+  </div>
+
+  <div class="collab-card reveal">
+    <div class="collab-icon">📚</div>
+    <h3>內容授權 / 媒體合作</h3>
+    <p>親子媒體、出版社、教育平台，歡迎洽談內容授權、專欄供稿或課程合作。</p>
+    <div class="collab-tags">
+      <span class="collab-tag">文章授權</span>
+      <span class="collab-tag">課程合作</span>
+      <span class="collab-tag">專欄撰寫</span>
+    </div>
+  </div>
+
+  <div class="collab-card reveal">
+    <div class="collab-icon">🌐</div>
+    <h3>業配 / 好物推薦</h3>
+    <p>如果你的產品真的用過、真的喜歡，我們會真心推薦。適合科學玩具、文具、親子生活品牌。</p>
+    <div class="collab-tags">
+      <span class="collab-tag">開箱體驗</span>
+      <span class="collab-tag">長期大使</span>
+      <span class="collab-tag">好物清單</span>
+    </div>
+  </div>
+
+  <div class="collab-card reveal">
+    <div class="collab-icon">💡</div>
+    <h3>其他自訂合作</h3>
+    <p>有什麼特別的想法？我們非常歡迎不在框架內的提案，說說你的想法吧！</p>
+    <div class="collab-tags">
+      <span class="collab-tag">歡迎自由提案</span>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+
+<section class="audience-section">
+  <div class="max-w">
+    <div class="section-label reveal">受眾輪廓</div>
+    <h2 class="reveal">你的產品會接觸到誰</h2>
+    <p class="section-desc reveal">小日光的粉絲，都是那種週末願意陪孩子一起弄髒手的大人。</p>
+
+```
+<div class="audience-grid reveal">
+  <div class="audience-card">
+    <div class="audience-icon">👩</div>
+    <h4>主力受眾</h4>
+    <p>25–40 歲台灣媽媽（部分爸爸），孩子 4–10 歲，重視陪伴品質</p>
+  </div>
+  <div class="audience-card">
+    <div class="audience-icon">💰</div>
+    <h4>消費力</h4>
+    <p>願意為孩子的體驗與學習付費，對課程、材料、親子活動有穩定消費習慣</p>
+  </div>
+  <div class="audience-card">
+    <div class="audience-icon">💛</div>
+    <h4>價值觀共鳴</h4>
+    <p>對教養焦慮感疲勞，偏好溫暖、真實、非完美的親子內容風格</p>
+  </div>
+</div>
+
+<div class="audience-note reveal">
+  <p>
+    ⚠️ 我們不接受：<strong>以誇大學習效果為訴求的補習班廣告、不符合品牌調性的快消品、或要求特定文案方向的強硬合作方式。</strong><br><br>
+    我們重視的是真實的使用體驗，每一次合作都會先試用產品，才決定是否推薦。
+  </p>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FORM -->
+
+<section class="form-section">
+  <div class="max-w">
+    <div style="text-align:center; margin-bottom: 48px;">
+      <div class="section-label reveal" style="justify-content:center">聯絡我們</div>
+      <h2 class="reveal">填寫合作提案</h2>
+      <p class="section-desc reveal" style="margin: 0 auto; text-align:center;">填完後我們會在 3–5 個工作天內回覆，期待認識你！</p>
+    </div>
+
+```
+<div class="form-wrap reveal">
+  <div id="formContent">
+    <div class="form-row">
+      <div class="form-group">
+        <label>你的名字 <span>*</span></label>
+        <input type="text" id="inputName" placeholder="怎麼稱呼你？" />
+      </div>
+      <div class="form-group">
+        <label>聯絡 Email <span>*</span></label>
+        <input type="email" id="inputEmail" placeholder="your@email.com" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>品牌 / 公司名稱</label>
+      <input type="text" id="inputBrand" placeholder="你代表哪個品牌或單位？（個人也歡迎）" />
+    </div>
+
+    <div class="form-group">
+      <label>合作類型 <span>*</span></label>
+      <select id="inputType">
+        <option value="">請選擇合作方式</option>
+        <option value="content">品牌內容合作（IG 貼文 / Reels）</option>
+        <option value="event">活動 / 工作坊邀請</option>
+        <option value="product">聯名材料包 / 產品共創</option>
+        <option value="media">內容授權 / 媒體合作</option>
+        <option value="sponsor">業配 / 好物推薦</option>
+        <option value="other">其他（請在說明欄描述）</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>合作說明 <span>*</span></label>
+      <textarea id="inputDesc" placeholder="簡單說說你的想法、產品類型、預期合作形式、時間規劃等，越具體越好 😊"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>預算範圍（選填）</label>
+      <select id="inputBudget">
+        <option value="">不方便透露 / 再討論</option>
+        <option value="under5k">NT$ 5,000 以下</option>
+        <option value="5k-15k">NT$ 5,000–15,000</option>
+        <option value="15k-30k">NT$ 15,000–30,000</option>
+        <option value="above30k">NT$ 30,000 以上</option>
+      </select>
+    </div>
+
+    <button class="form-submit" onclick="submitForm()">
+      ☀️ 送出提案
+    </button>
+    <p class="form-note">我們通常在 3–5 個工作天內回覆，也歡迎直接 DM IG @littlesunandme</p>
+  </div>
+
+  <div class="form-success" id="formSuccess">
+    <div class="success-icon">🌟</div>
+    <h3>謝謝你的提案！</h3>
+    <p>我們已收到你的訊息，<br>會在 3–5 個工作天內透過 Email 與你聯繫。<br><br>期待一起創造有意義的親子時刻 💛</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">☀️ 小日光與我</div>
+  <p>Little Sunshine & Me · 用好奇心，照亮每一個平凡的日子</p>
+  <p style="margin-top:8px; font-size:0.78rem;">© 2025 小日光與我 · Made with 💛 in Taiwan</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Form submit (前端 validation，實際送出需接後端或 Formspree)
+  function submitForm() {
+    const name = document.getElementById('inputName').value.trim();
+    const email = document.getElementById('inputEmail').value.trim();
+    const type = document.getElementById('inputType').value;
+    const desc = document.getElementById('inputDesc').value.trim();
+
+    if (!name) { alert('請填寫你的名字 😊'); return; }
+    if (!email || !email.includes('@')) { alert('請填寫正確的 Email 😊'); return; }
+    if (!type) { alert('請選擇合作類型 😊'); return; }
+    if (!desc) { alert('請填寫合作說明 😊'); return; }
+
+    // 這裡可以替換成 Formspree / EmailJS / 自己的 API
+    // 目前顯示成功畫面
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
