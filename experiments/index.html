@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 以下 meta 由 JS 動態填入 -->
+<title>實驗 ｜ 小日光與我</title>
+<meta name="description" content="">
+<meta name="robots" content="index, follow">
+<meta name="author" content="小日光與我">
+<meta property="og:site_name" content="小日光與我 Little Sunshine & Me">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://meill.github.io/littlesunandme_website/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://meill.github.io/littlesunandme_website/cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="experiment.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <a href="../index.html" class="nav-logo"><span class="sun-dot"></span>小日光與我</a>
+  <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="../index.html#experiments">STEAM 實驗</a></li>
+    <li><a href="../index.html#portfolio">作品集</a></li>
+    <li><a href="../index.html#about">關於我們</a></li>
+    <li><a href="../collab.html">合作洽詢</a></li>
+  </ul>
+</nav>
+
+<!-- 內容區塊（由 JS 填入） -->
+<div id="app">
+  <!-- 載入中畫面 -->
+  <div id="loading" style="display:flex;align-items:center;justify-content:center;min-height:100vh;flex-direction:column;gap:16px;">
+    <div style="font-size:3rem;animation:float-card 1.5s ease-in-out infinite">☀️</div>
+    <p style="font-family:'Caveat',cursive;font-size:1.4rem;color:var(--text-light)">載入中...</p>
+  </div>
+  <!-- 找不到實驗 -->
+  <div id="not-found" style="display:none;text-align:center;padding:160px 48px 80px;">
+    <div style="font-size:4rem;margin-bottom:16px">🔍</div>
+    <h1 style="font-family:'Noto Serif TC',serif;font-size:2rem;margin-bottom:12px">找不到這個實驗</h1>
+    <p style="color:var(--text-light);margin-bottom:32px">這個實驗可能還不存在，或是網址打錯了。</p>
+    <a href="../index.html#experiments" style="display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;border-radius:100px;padding:12px 28px;font-weight:700;text-decoration:none">← 回到所有實驗</a>
+  </div>
+</div>
+
+<!-- 實驗頁面模板（隱藏，由 JS clone 並填入） -->
+<template id="exp-template">
+  <section class="hero">
+    <div class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <nav class="breadcrumb-nav" aria-label="breadcrumb">
+          <a href="../index.html">首頁</a><span>›</span>
+          <a href="../index.html#experiments">STEAM 實驗</a><span>›</span>
+          <span data-field="title"></span>
+        </nav>
+        <div class="hero-badge"><span class="dot"></span> <span data-field="badge-text"></span></div>
+        <h1 class="hero-title" data-field="hero-title"></h1>
+        <p class="hero-subtitle" data-field="subtitle"></p>
+        <p class="hero-desc" data-field="desc"></p>
+        <div class="hero-tags" data-field="tags"></div>
+        <div class="hero-cta">
+          <a href="#steps" class="btn btn-primary">看實驗步驟 →</a>
+          <a href="#video" class="btn btn-outline">觀看影片</a>
+        </div>
+      </div>
+      <div class="hero-emoji-wrap" data-field="emoji"></div>
+    </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stats-inner" data-field="stats"></div>
+  </div>
+
+  <section id="steps" style="background:var(--cream)">
+    <div class="max-w">
+      <div class="section-label reveal">開始實驗</div>
+      <h2 class="reveal">材料與步驟</h2>
+      <p class="section-desc reveal" data-field="steps-intro"></p>
+      <div class="two-col">
+        <div class="content-card reveal">
+          <div class="card-label">🛒 材料清單</div>
+          <ul class="materials-list" data-field="materials"></ul>
+        </div>
+        <div class="content-card reveal">
+          <div class="card-label">📋 實驗步驟</div>
+          <ol class="steps-list" data-field="steps"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="science-section">
+    <div class="max-w">
+      <div class="section-label reveal">知識補給站</div>
+      <h2 class="reveal">科學原理</h2>
+      <p class="section-desc reveal">讓孩子先猜猜看，再一起看答案！</p>
+      <div class="science-inner">
+        <div class="science-note reveal" data-field="note"></div>
+        <div class="science-tip reveal">
+          <h4>🌱 延伸探索</h4>
+          <ul class="tip-list" data-field="tips"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section" id="video">
+    <div class="max-w">
+      <h2>來看我們實際做的樣子 📸</h2>
+      <p data-field="video-desc"></p>
+      <a data-field="video-btn" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <div class="max-w">
+      <div class="section-label reveal">繼續探索</div>
+      <h2 class="reveal">你也可以試試看 🧪</h2>
+      <p class="section-desc reveal">還有更多好玩的親子實驗等你來做！</p>
+      <div class="related-grid" data-field="related"></div>
+    </div>
+  </section>
+
+  <div class="back-strip">
+    <a href="../index.html#experiments" class="back-btn">← 回到所有實驗</a>
+  </div>
+
+  <footer>
+    <div class="footer-logo">☀️ 小日光與我</div>
+    <p>Little Sunshine & Me · 用好奇心，照亮每一個平凡的日子</p>
+    <p style="margin-top:8px;font-size:0.78rem">© 2025 小日光與我 · Made with 💛 in Taiwan</p>
+  </footer>
+</template>
+
+<script>
+// ── 漢堡選單 ──
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks  = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', false);
+}));
+
+// ── 輔助函式 ──
+const levelStars = n => '★'.repeat(n) + '☆'.repeat(3 - n);
+const levelText  = n => ['', '初級', '初中級', '進階'][n] || '';
+
+const IG_SVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+const YT_SVG  = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+
+// ── 主要渲染函式 ──
+async function render() {
+  const slug = new URLSearchParams(location.search).get('slug');
+
+  // 沒有 slug → 導向首頁實驗區
+  if (!slug) { location.replace('../index.html#experiments'); return; }
+
+  let all;
+  try {
+    const res = await fetch('../data/experiments.json');
+    all = await res.json();
+  } catch {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('not-found').style.display = 'block';
+    return;
+  }
+
+  const exp = all.find(e => e.slug === slug);
+  if (!exp) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('not-found').style.display = 'block';
+    return;
+  }
+
+  // ── 更新 SEO meta ──
+  const BASE = 'https://meill.github.io/littlesunandme_website';
+  const url  = `${BASE}/experiments/?slug=${slug}`;
+  document.title = `${exp.title} ｜ 親子STEAM ｜ 小日光與我`;
+  setMeta('name', 'description', `${exp.desc} ${exp.tags.join('、')}，${exp.time}。`);
+  setMeta('property', 'og:title',       `${exp.title} ｜ 親子STEAM ｜ 小日光與我`);
+  setMeta('property', 'og:description', exp.desc);
+  setMeta('property', 'og:url',         url);
+  setMeta('name', 'twitter:title',       `${exp.title} ｜ 小日光與我`);
+  setMeta('name', 'twitter:description', exp.desc);
+  addCanonical(url);
+  addJsonLd(exp, url);
+
+  // ── clone 模板並填入資料 ──
+  const tpl  = document.getElementById('exp-template');
+  const node = tpl.content.cloneNode(true);
+
+  fill(node, 'title',      exp.title);
+  fill(node, 'badge-text', `${exp.badge} · ${exp.tags[0]}`);
+  fill(node, 'emoji',      exp.emoji);
+  fill(node, 'subtitle',   `${exp.desc.slice(0, 15)}... ${exp.emoji}`);
+  fill(node, 'desc',       exp.desc);
+
+  // Tags
+  fill(node, 'tags', exp.tags.map(t =>
+    `<span class="tag">${t}</span>`
+  ).join('') + `<span class="tag tag-time">⏱ ${exp.time}</span>`, true);
+
+  // Hero title（粗體重點字）
+  const words = exp.title.split('');
+  const mid   = Math.ceil(words.length / 2);
+  fill(node, 'hero-title',
+    `${words.slice(0, mid).join('')}<span class="accent">${words.slice(mid).join('')}</span>`,
+    true);
+
+  // Steps intro
+  fill(node, 'steps-intro', `${exp.tags[1] || ''}材料簡單，準備好就可以開始了！`);
+
+  // Stats
+  fill(node, 'stats', `
+    <div><div class="stat-num">${exp.time.replace('約 ', '').replace(' 分鐘', '分')}</div><div class="stat-label">所需時間</div></div>
+    <div><div class="stat-num">${levelStars(exp.level)}</div><div class="stat-label">${levelText(exp.level)}難度</div></div>
+    <div><div class="stat-num">${exp.tags[2] || exp.tags[1]}</div><div class="stat-label">適合年齡</div></div>
+    <div><div class="stat-num">${exp.tags[1]}</div><div class="stat-label">實驗類型</div></div>
+  `, true);
+
+  // Materials
+  fill(node, 'materials',
+    exp.materials.map(m => `<li>${m}</li>`).join(''), true);
+
+  // Steps
+  fill(node, 'steps',
+    exp.steps.map((s, i) =>
+      `<li class="step-item"><span class="step-num">${i + 1}</span><span class="step-text">${s}</span></li>`
+    ).join(''), true);
+
+  // Science note
+  fill(node, 'note', exp.note, true);
+
+  // Tips
+  fill(node, 'tips',
+    (exp.tips || []).map(t => `<li>${t}</li>`).join(''), true);
+
+  // Video
+  const isIG   = exp.videoType === 'ig';
+  const btnCls = isIG ? 'ig-btn' : 'yt-btn';
+  const btnTxt = isIG ? '觀看 Instagram Reel' : '觀看 YouTube 影片';
+  const btnSvg = isIG ? IG_SVG : YT_SVG;
+  fill(node, 'video-desc',
+    isIG ? '包含孩子驚叫的珍貴瞬間，還有失敗又重來的過程 😂'
+         : '完整的實驗過程都在這裡，一起跟著做吧！');
+  const vBtn = node.querySelector('[data-field="video-btn"]');
+  if (vBtn) {
+    vBtn.href = exp.videoLink;
+    vBtn.className = btnCls;
+    vBtn.innerHTML = `${btnSvg} ${btnTxt}`;
+  }
+
+  // Related experiments（取其他 3 個）
+  const others = all.filter(e => e.slug !== slug).slice(0, 3);
+  fill(node, 'related', others.map(e => `
+    <a href="?slug=${e.slug}" class="exp-card reveal">
+      <div class="exp-header" style="background:${e.bg}">
+        ${e.emoji}<span class="exp-badge-chip">${e.badge}</span>
+      </div>
+      <div class="exp-body">
+        <div class="exp-title-card">${e.title}</div>
+        <p class="exp-desc-card">${e.desc}</p>
+      </div>
+    </a>
+  `).join(''), true);
+
+  // ── 插入 DOM ──
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  app.appendChild(node);
+
+  // ── Scroll reveal ──
+  const obs = new IntersectionObserver(entries =>
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+// ── 工具函式 ──
+function fill(node, field, value, isHTML = false) {
+  const el = node.querySelector(`[data-field="${field}"]`);
+  if (!el) return;
+  if (isHTML) el.innerHTML = value;
+  else el.textContent = value;
+}
+
+function setMeta(attr, name, content) {
+  let el = document.querySelector(`meta[${attr}="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+
+function addCanonical(url) {
+  let el = document.querySelector('link[rel="canonical"]');
+  if (!el) { el = document.createElement('link'); el.rel = 'canonical'; document.head.appendChild(el); }
+  el.href = url;
+}
+
+function addJsonLd(exp, url) {
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: exp.title,
+    description: exp.desc,
+    url,
+    supply: exp.materials.map(m => ({ '@type': 'HowToSupply', name: m })),
+    step:  exp.steps.map(s  => ({ '@type': 'HowToStep',    text: s })),
+    author: { '@type': 'Person', name: '小日光與我',
+              url: 'https://meill.github.io/littlesunandme_website/' }
+  });
+  document.head.appendChild(script);
+}
+
+render();
+</script>
+</body>
+</html>
