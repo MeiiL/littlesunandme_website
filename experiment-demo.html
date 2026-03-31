@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小火山爆發實驗 ｜ 親子STEAM ｜ 小日光與我</title>
+<meta name="description" content="用小蘇打和醋，在家做出讓人驚叫的迷你火山爆發！5歲以上適合，約20分鐘，安全無毒。附詳細步驟與科學原理。">
+<meta name="keywords" content="小火山實驗, 小蘇打醋實驗, 親子科學實驗, STEAM, 居家實驗, 5歲科學, 化學實驗兒童">
+<meta name="author" content="小日光與我 Little Sunshine & Me">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://meill.github.io/littlesunandme_website/experiments/xiao-huoshan.html">
+<meta property="og:site_name" content="小日光與我 Little Sunshine & Me">
+<meta property="og:title" content="小火山爆發實驗 ｜ 親子STEAM ｜ 小日光與我">
+<meta property="og:description" content="用小蘇打和醋，在家做出讓人驚叫的迷你火山爆發！5歲以上適合，安全無毒。">
+<meta property="og:image" content="https://meill.github.io/littlesunandme_website/cover.jpg">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://meill.github.io/littlesunandme_website/experiments/xiao-huoshan.html">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="小火山爆發實驗 ｜ 小日光與我">
+<meta name="twitter:description" content="用小蘇打和醋，在家做出讓人驚叫的迷你火山爆發！">
+<meta name="twitter:image" content="https://meill.github.io/littlesunandme_website/cover.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "小火山爆發實驗",
+  "description": "用小蘇打和醋，在家做出讓人驚叫的迷你火山爆發！安全無毒，5歲以上適合。",
+  "totalTime": "PT20M",
+  "supply": [
+    {"@type": "HowToSupply", "name": "小蘇打粉 2匙"},
+    {"@type": "HowToSupply", "name": "白醋 半杯"},
+    {"@type": "HowToSupply", "name": "食用色素（紅色）"},
+    {"@type": "HowToSupply", "name": "碗或紙杯"},
+    {"@type": "HowToSupply", "name": "托盤（防溢）"}
+  ],
+  "step": [
+    {"@type": "HowToStep", "text": "在碗中加入小蘇打粉"},
+    {"@type": "HowToStep", "text": "滴入幾滴紅色食用色素"},
+    {"@type": "HowToStep", "text": "準備好，慢慢倒入白醋"},
+    {"@type": "HowToStep", "text": "觀察泡沫噴發的瞬間！"},
+    {"@type": "HowToStep", "text": "討論：為什麼會起泡泡？"}
+  ],
+  "author": {"@type": "Person", "name": "小日光與我", "url": "https://meill.github.io/littlesunandme_website/"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sun: #FFD84D; --sun-light: #FFF3B0; --coral: #FF8B6B;
+  --mint: #7ECAC3; --sky: #A8D8EA; --lavender: #C3B1E1;
+  --leaf: #90C67C; --cream: #FFFDF5; --text: #3A3226;
+  --text-light: #7A6E61; --white: #FFFFFF;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', 'Noto Serif TC', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(255,253,245,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--sun-light);
+}
+.nav-logo {
+  font-family: 'Caveat', cursive; font-size: 1.6rem; font-weight: 700;
+  color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 8px;
+}
+.sun-dot {
+  width: 22px; height: 22px; border-radius: 50%; background: var(--sun);
+  box-shadow: 0 0 0 4px var(--sun-light); flex-shrink: 0;
+  animation: pulse-sun 3s ease-in-out infinite;
+}
+@keyframes pulse-sun {
+  0%,100%{ box-shadow: 0 0 0 4px var(--sun-light); }
+  50%{ box-shadow: 0 0 0 8px rgba(255,216,77,0.2); }
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--text-light); font-weight: 600; font-size: 0.95rem;
+  position: relative; padding-bottom: 2px; transition: color 0.2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--coral); transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--coral); }
+.nav-links a:hover::after { width: 100%; }
+.nav-toggle {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 60vh; display: flex; align-items: center; justify-content: center;
+  padding: 120px 48px 60px; position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #FFFDF5 0%, #FFF3B0 40%, #FFE8D6 70%, #E8F5F3 100%);
+}
+.hero-blobs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.blob { position: absolute; border-radius: 50%; opacity: 0.35; filter: blur(60px); animation: float-blob 8s ease-in-out infinite; }
+.blob-1 { width: 350px; height: 350px; background: var(--sun); top: -80px; right: -60px; }
+.blob-2 { width: 250px; height: 250px; background: var(--mint); bottom: 0px; left: -60px; animation-delay: 3s; }
+.blob-3 { width: 180px; height: 180px; background: var(--coral); top: 50%; left: 40%; animation-delay: 5s; }
+@keyframes float-blob { 0%,100%{ transform: translate(0,0) scale(1); } 50%{ transform: translate(20px,-30px) scale(1.05); } }
+
+.hero-inner {
+  max-width: 1100px; width: 100%;
+  display: grid; grid-template-columns: 1fr auto; gap: 48px;
+  align-items: center; position: relative; z-index: 1;
+  animation: fade-up 0.8s ease both;
+}
+@keyframes fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.breadcrumb {
+  font-size: 0.82rem; color: var(--text-light); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--text-light); text-decoration: none; transition: color 0.2s; }
+.breadcrumb a:hover { color: var(--coral); }
+.breadcrumb span { color: #C0B8AE; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white); border: 2px solid var(--sun);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 0.8rem; font-weight: 700; color: var(--text-light);
+  margin-bottom: 16px; letter-spacing: 0.05em;
+}
+.hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+
+.hero-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.25;
+  color: var(--text); margin-bottom: 12px;
+}
+.hero-title .accent { color: var(--coral); }
+.hero-subtitle { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--mint); font-weight: 700; margin-bottom: 16px; }
+.hero-desc { font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 24px; }
+
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.tag {
+  background: var(--white); border-radius: 100px; padding: 5px 14px;
+  font-size: 0.82rem; font-weight: 600; color: var(--text);
+  border: 2px solid transparent; transition: all 0.2s;
+}
+.tag:hover { transform: translateY(-2px); }
+.tag-chem { border-color: var(--coral); }
+.tag-safe { border-color: var(--leaf); }
+.tag-age  { border-color: var(--sun); }
+.tag-time { border-color: var(--mint); }
+
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 100px;
+  font-size: 0.92rem; font-weight: 700; text-decoration: none;
+  transition: all 0.25s; cursor: pointer; border: none; font-family: 'Nunito', sans-serif;
+}
+.btn-primary { background: var(--coral); color: var(--white); }
+.btn-primary:hover { background: #e8704f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,139,107,0.4); }
+.btn-outline { background: transparent; color: var(--text); border: 2px solid var(--text-light); }
+.btn-outline:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
+
+.hero-emoji-wrap { font-size: 8rem; line-height: 1; animation: float-card 5s ease-in-out infinite; }
+@keyframes float-card { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-12px); } }
+
+/* ── STATS STRIP ── */
+.stats-strip { background: #5C4A32; color: var(--white); padding: 32px 48px; }
+.stats-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;
+}
+.stat-num { font-family: 'Caveat', cursive; font-size: 2.2rem; font-weight: 700; color: var(--sun); line-height: 1; }
+.stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-top: 4px; font-weight: 600; }
+
+/* ── SECTION COMMON ── */
+section { padding: 72px 48px; }
+.max-w { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Caveat', cursive; font-size: 1.1rem; font-weight: 700;
+  color: var(--coral); margin-bottom: 12px;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 3px; background: var(--coral); border-radius: 2px; }
+h2 { font-family: 'Noto Serif TC', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.35; margin-bottom: 16px; }
+.section-desc { color: var(--text-light); font-size: 1rem; line-height: 1.8; max-width: 560px; margin-bottom: 40px; }
+
+/* ── MATERIALS + STEPS ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.content-card {
+  background: var(--white); border-radius: 24px; padding: 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.card-label {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Caveat', cursive; font-size: 1.15rem; font-weight: 700;
+  color: var(--coral); margin-bottom: 20px;
+}
+.materials-list { list-style: none; }
+.materials-list li {
+  padding: 10px 0; border-bottom: 1px solid #F0EAE0;
+  font-size: 0.92rem; color: var(--text); display: flex; align-items: center; gap: 10px;
+}
+.materials-list li:last-child { border-bottom: none; }
+.materials-list li::before { content: '✦'; color: var(--sun); font-size: 0.7rem; flex-shrink: 0; }
+
+.steps-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.step-item { display: flex; gap: 14px; align-items: flex-start; }
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--coral); color: var(--white);
+  font-weight: 800; font-size: 0.85rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-text { font-size: 0.92rem; color: var(--text); line-height: 1.7; padding-top: 5px; }
+
+/* ── SCIENCE ── */
+.science-section { background: #F0FBF9; }
+.science-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.science-note {
+  background: var(--sun-light); border-radius: 20px; padding: 28px;
+  border-left: 5px solid var(--sun);
+  font-size: 0.95rem; color: var(--text); line-height: 1.9;
+}
+.science-note strong { color: var(--coral); }
+.science-tip {
+  background: var(--white); border-radius: 20px; padding: 28px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.science-tip h4 {
+  font-family: 'Caveat', cursive; font-size: 1.1rem; font-weight: 700;
+  color: var(--mint); margin-bottom: 14px;
+}
+.tip-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.tip-list li { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; padding-left: 20px; position: relative; }
+.tip-list li::before { content: '💡'; position: absolute; left: 0; font-size: 0.8rem; }
+
+/* ── VIDEO ── */
+.video-section { background: var(--text); padding: 60px 48px; text-align: center; }
+.video-section h2 { color: var(--white); margin-bottom: 12px; }
+.video-section p { color: rgba(255,255,255,0.6); margin-bottom: 32px; font-size: 1rem; line-height: 1.8; }
+.ig-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: var(--white); border-radius: 100px; padding: 14px 36px;
+  font-size: 1rem; font-weight: 700; text-decoration: none; transition: all 0.25s;
+}
+.ig-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(220,39,67,0.4); }
+
+/* ── RELATED ── */
+.related-section { background: var(--cream); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.exp-card {
+  background: var(--white); border-radius: 24px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: all 0.35s;
+  border: 2px solid transparent; text-decoration: none; color: var(--text); display: block;
+}
+.exp-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); border-color: var(--mint); }
+.exp-header {
+  height: 130px; display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem; position: relative;
+}
+.exp-badge-chip {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(255,255,255,0.9); border-radius: 100px;
+  padding: 3px 10px; font-size: 0.72rem; font-weight: 700; color: var(--text-light);
+}
+.exp-body { padding: 20px 24px; }
+.exp-title-card { font-family: 'Noto Serif TC', serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+.exp-desc-card { font-size: 0.85rem; color: var(--text-light); line-height: 1.7; }
+
+/* ── BACK ── */
+.back-strip { background: var(--cream); padding: 0 48px 56px; }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--text-light); text-decoration: none; font-weight: 700; font-size: 0.9rem;
+  border: 2px solid #E0D8CC; border-radius: 100px; padding: 10px 22px;
+  transition: all 0.2s;
+}
+.back-btn:hover { color: var(--coral); border-color: var(--coral); }
+
+/* ── FOOTER ── */
+footer { background: #2A2420; color: rgba(255,255,255,0.5); text-align: center; padding: 40px 48px; }
+.footer-logo { font-family: 'Caveat', cursive; font-size: 1.4rem; font-weight: 700; color: var(--sun); margin-bottom: 12px; }
+footer p { font-size: 0.85rem; }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none; position: fixed; top: 64px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: rgba(255,253,245,0.98);
+    border-bottom: 2px solid var(--sun-light); padding: 12px 0;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 14px 24px; font-size: 1rem; }
+  section, .back-strip { padding-left: 20px; padding-right: 20px; }
+  .hero { padding: 100px 20px 50px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 16px; }
+  .hero-emoji-wrap { display: none; }
+  .stats-strip { padding: 28px 20px; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .two-col { grid-template-columns: 1fr; }
+  .science-inner { grid-template-columns: 1fr; }
+  .video-section { padding: 48px 20px; }
+  .related-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo"><span class="sun-dot"></span>小日光與我</a>
+  <button class="nav-toggle" aria-label="開啟選單" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="../index.html#experiments">STEAM 實驗</a></li>
+    <li><a href="../index.html#portfolio">作品集</a></li>
+    <li><a href="../index.html#about">關於我們</a></li>
+    <li><a href="../collab.html">合作洽詢</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href="../index.html">首頁</a><span>›</span>
+        <a href="../index.html#experiments">STEAM 實驗</a><span>›</span>
+        小火山爆發
+      </nav>
+      <div class="hero-badge"><span class="dot"></span> Science · 化學</div>
+      <h1 class="hero-title">小火山<span class="accent">爆發</span></h1>
+      <p class="hero-subtitle">讓廚房變成火山爆發現場 🌋</p>
+      <p class="hero-desc">用小蘇打和醋，在家做出讓人驚叫的迷你火山爆發！<br>材料簡單取得，安全無毒，是第一次做科學實驗的絕佳選擇。</p>
+      <div class="hero-tags">
+        <span class="tag tag-chem">🧪 化學反應</span>
+        <span class="tag tag-safe">✅ 安全無毒</span>
+        <span class="tag tag-age">👶 5歲以上</span>
+        <span class="tag tag-time">⏱ 約20分鐘</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#steps" class="btn btn-primary">看實驗步驟 →</a>
+        <a href="#video" class="btn btn-outline">觀看影片</a>
+      </div>
+    </div>
+    <div class="hero-emoji-wrap">🌋</div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">20分</div><div class="stat-label">所需時間</div></div>
+    <div class="stat-item"><div class="stat-num">★★☆</div><div class="stat-label">初中級難度</div></div>
+    <div class="stat-item"><div class="stat-num">5歲+</div><div class="stat-label">適合年齡</div></div>
+    <div class="stat-item"><div class="stat-num">✅</div><div class="stat-label">安全無毒材料</div></div>
+  </div>
+</div>
+
+<!-- 材料 + 步驟 -->
+<section id="steps" style="background: var(--cream);">
+  <div class="max-w">
+    <div class="section-label reveal">開始實驗</div>
+    <h2 class="reveal">材料與步驟</h2>
+    <p class="section-desc reveal">材料都在超市買得到，準備好托盤就可以開始了！</p>
+    <div class="two-col">
+      <div class="content-card reveal">
+        <div class="card-label">🛒 材料清單</div>
+        <ul class="materials-list">
+          <li>小蘇打粉 2 匙</li>
+          <li>白醋 半杯</li>
+          <li>食用色素（紅色）</li>
+          <li>碗或紙杯</li>
+          <li>托盤（防溢）</li>
+        </ul>
+      </div>
+      <div class="content-card reveal">
+        <div class="card-label">📋 實驗步驟</div>
+        <ol class="steps-list">
+          <li class="step-item"><span class="step-num">1</span><span class="step-text">在碗中加入小蘇打粉</span></li>
+          <li class="step-item"><span class="step-num">2</span><span class="step-text">滴入幾滴紅色食用色素</span></li>
+          <li class="step-item"><span class="step-num">3</span><span class="step-text">準備好，慢慢倒入白醋</span></li>
+          <li class="step-item"><span class="step-num">4</span><span class="step-text">觀察泡沫噴發的瞬間！</span></li>
+          <li class="step-item"><span class="step-num">5</span><span class="step-text">討論：為什麼會起泡泡？</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 科學原理 -->
+<section class="science-section">
+  <div class="max-w">
+    <div class="section-label reveal">知識補給站</div>
+    <h2 class="reveal">科學原理</h2>
+    <p class="section-desc reveal">讓孩子先猜猜看，再一起看答案！</p>
+    <div class="science-inner">
+      <div class="science-note reveal">
+        小蘇打（<strong>鹼性</strong>）和醋（<strong>酸性</strong>）相遇，產生<strong>二氧化碳氣體</strong>，就是那些泡泡！<br><br>
+        化學式：<strong>NaHCO₃ + CH₃COOH → CO₂ + H₂O</strong><br><br>
+        重過程最重要——讓孩子猜猜看，倒多少醋會爆發最多泡泡？每次試試不同的量，觀察結果有什麼不同。
+      </div>
+      <div class="science-tip reveal">
+        <h4>🌱 延伸探索</h4>
+        <ul class="tip-list">
+          <li>試試看加不同顏色的色素，混合後會變成什麼顏色？</li>
+          <li>用更多小蘇打 vs 更少，泡泡的量有差嗎？</li>
+          <li>加入洗碗精，泡沫會不一樣嗎？</li>
+          <li>讓孩子畫下實驗前後的預測和結果</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 影片 -->
+<section class="video-section" id="video">
+  <div class="max-w">
+    <h2>來看我們實際做的樣子 📸</h2>
+    <p>包含小孩驚叫的珍貴瞬間，<br>還有我們失敗又重來的過程 😂</p>
+    <a href="https://www.instagram.com/reel/DT2Sw_biZb3/" target="_blank" rel="noopener noreferrer" class="ig-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      觀看 Instagram Reel
+    </a>
+  </div>
+</section>
+
+<!-- 相關實驗 -->
+<section class="related-section">
+  <div class="max-w">
+    <div class="section-label reveal">繼續探索</div>
+    <h2 class="reveal">你也可以試試看 🧪</h2>
+    <p class="section-desc reveal">還有更多好玩的親子實驗等你來做！</p>
+    <div class="related-grid">
+      <a href="#" class="exp-card reveal">
+        <div class="exp-header" style="background:#E8F5F3">🌈<span class="exp-badge-chip">Art+Science</span></div>
+        <div class="exp-body">
+          <div class="exp-title-card">牛奶彩虹畫</div>
+          <p class="exp-desc-card">在牛奶裡加一滴洗碗精，看顏色像魔法一樣擴散開來！</p>
+        </div>
+      </a>
+      <a href="#" class="exp-card reveal">
+        <div class="exp-header" style="background:#FFF0E8">🌊<span class="exp-badge-chip">Physics</span></div>
+        <div class="exp-body">
+          <div class="exp-title-card">海洋瓶：不混合的水</div>
+          <p class="exp-desc-card">油和水為什麼不能混在一起？做一瓶永遠搖不混的海洋！</p>
+        </div>
+      </a>
+      <a href="#" class="exp-card reveal">
+        <div class="exp-header" style="background:#FFF5FF">🎨<span class="exp-badge-chip">Art+Science</span></div>
+        <div class="exp-body">
+          <div class="exp-title-card">吹畫蝴蝶</div>
+          <p class="exp-desc-card">把顏料「吹」成一隻蝴蝶，左右對稱的驚喜在展開的那一刻！</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BACK -->
+<div class="back-strip">
+  <a href="../index.html#experiments" class="back-btn">← 回到所有實驗</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">☀️ 小日光與我</div>
+  <p>Little Sunshine & Me · 用好奇心，照亮每一個平凡的日子</p>
+  <p style="margin-top:8px; font-size:0.78rem;">© 2025 小日光與我 · Made with 💛 in Taiwan</p>
+</footer>
+
+<script>
+// Hamburger
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks  = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', false);
+}));
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

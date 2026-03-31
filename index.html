@@ -785,8 +785,8 @@ function renderExperiments() {
       </div>
       <div class="exp-footer">
         <span class="exp-time">⏱ ${exp.time}</span>
-        <button class="exp-btn" onclick="openModal(${i})">看步驟 →</button>
-        <a href="${exp.videoLink}" target="_blank" class="exp-video-btn">觀看影片</a> 
+        <a href="experiments/?slug=${exp.slug}" class="exp-btn">看步驟 →</a>
+        <a href="${exp.videoLink}" target="_blank" rel="noopener noreferrer" class="exp-video-btn">觀看影片</a>
       </div>`;
     expGrid.appendChild(card);
   });
