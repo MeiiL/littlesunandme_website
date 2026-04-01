@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://meill.github.io/littlesunandme_website/sitemap.xml

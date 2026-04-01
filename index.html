@@ -493,6 +493,30 @@ color: var(--sun); margin-bottom: 12px;
 }
 footer p { font-size: 0.85rem; }
 
+/* ── HAMBURGER ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 101;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 /* ── responsive ── */
 @media(max-width: 768px) {
 nav { padding: 16px 24px; }
@@ -523,30 +547,6 @@ section { padding: 64px 20px; }
 .modal-header { height: 140px; font-size: 4rem; }
 .modal-body { padding: 20px; }
 }
-
-/* ── HAMBURGER ── */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  z-index: 101;
-}
-.nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: all 0.3s;
-}
-.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* scroll animation */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
@@ -635,7 +635,7 @@ section { padding: 64px 20px; }
     </div>
     <div class="hero-visual">
       <div class="sun-illustration">
-        <div class="floating-card card-1"><span class="icon">🔬</span> 今日實驗：醋酸鈉結晶</div>
+        <div class="floating-card card-1" id="todayExp"><span class="icon">🔬</span> 今日實驗：載入中...</div>
         <div class="sun-circle" id="sunCircle"></div>
         <div class="floating-card card-2"><span class="icon">🌟</span> 重過程 > 重結果</div>
         <div class="floating-card card-3"><span class="icon">🎮</span> Minecraft 創作中</div>
@@ -806,7 +806,7 @@ function renderPortfolio(filter) {
       <div class="portfolio-img" style="background:${p.bg}">
         ${p.emoji}
         <div class="portfolio-overlay">
-          <a href="#" class="overlay-link">查看</a>
+          <a href="${p.videoLink}" target="_blank" rel="noopener noreferrer" class="overlay-link">查看</a>
         </div>
       </div>
       <div class="portfolio-info">
@@ -896,6 +896,11 @@ Promise.all([
   portfolio = portData;
   renderExperiments();
   renderPortfolio('all');
+
+  // 隨機挑一個實驗顯示在 Hero 浮動卡片
+  const pick = expData[Math.floor(Math.random() * expData.length)];
+  document.getElementById('todayExp').innerHTML =
+    `<span class="icon">${pick.emoji}</span> 今日實驗：${pick.title}`;
 })
 .catch(err => {
   console.error('資料載入失敗：', err);
